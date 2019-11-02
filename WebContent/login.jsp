@@ -1,60 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>·Î±×ÀÎÆäÀÌÁö</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<script src="js/jquery-3.3.1.min.js"></script>
-</head>
-<body>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">Cafe</a>
-
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Ä«Æä ¸ñ·Ï</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Ä«Æä »ý¼º</a>
-                    </li>
-                </ul>
-                <a href="#" class="btn btn-link btn-sm">È¸¿ø°¡ÀÔ</a>
-                <a href="#" class="btn btn-link btn-sm" style="margin-left: 10px;">·Î±×ÀÎ</a>
-                <a href="#" class="btn btn-link btn-sm">·Î±×¾Æ¿ô</a>
-            </div>
-        </div>
-    </nav>
+<jsp:include page="header.jsp" />
 
     <div class="container">
-        <h1 style="margin: 120px 0;">·Î±×ÀÎ</h1>
-        <form>
+        <h1 style="margin: 120px 0;">ë¡œê·¸ì¸</h1>
+        <form action="/member/login" method="post">
             <div class="form-group row">
-                <label for="id" class="col-sm-2 col-form-label">¾ÆÀÌµð</label>
+                <label for="id" class="col-sm-2 col-form-label">ì•„ì´ë””</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="id" placeholder="¾ÆÀÌµð">
+                    <input type="text" class="form-control" id="id" name="id" placeholder="ì•„ì´ë””">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="password" class="col-sm-2 col-form-label">ºñ¹Ð¹øÈ£</label>
+                <label for="password" class="col-sm-2 col-form-label">ë¹„ë°€ë²ˆí˜¸</label>
                 <div class="col-sm-10">
-                    <input type="password" class="form-control" id="password" placeholder="ºñ¹Ð¹øÈ£">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="ë¹„ë°€ë²ˆí˜¸">
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-sm-12">
-                    <button type="submit" class="btn btn-primary" style="float: right;">·Î±×ÀÎ</button>
+                    <button type="submit" class="btn btn-primary" style="float: right;">ë¡œê·¸ì¸</button>
                 </div>
             </div>
         </form>
     </div>
 
-    <footer class="bg-dark">Copyright &copy; 2019 MembershipBoard</footer>
-
-</body>
-</html>
+<jsp:include page="footer.jsp" />
