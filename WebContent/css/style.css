@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+.container { max-width: 1400px; }
+
+p.card-content { float: left; margin-left: 15px; margin-bottom: 0; }
+.card-body > p.card-content:nth-child(2) { margin-left: 0; }
+
+nav > .container > .collapse > .btn-link { color: #aaa; transition: 0s; }
+nav > .container > .collapse > .btn-link:hover { color: #eee; }
+
+.cafe-box { width: 300px; margin-top: 70px; float: left; }
+
+table.cafe-table { width: 930px; float: left; margin-top: 70px; margin-left: 80px; }
+table.cafe-table a { color: black; }
+
+.cafe-card { width: 1030px; margin-top: 70px; margin-left: 30px; float: left; }
+
+.list-title { width: 100%; border-top-right-radius: 5px; border-top-left-radius: 5px; padding: 10px 0 10px 20px; color: white; font-size: 15px; }
+
+.comment { width: 1030px; margin-left: 30px; margin-top: 150px; float: left; }
+.comment-list { width: 100%; float: left; margin-top: 30px; }
+.comment-btn { right: 10px; position: absolute; top: 10px; }
+.comment-btn:last-child { right: 60px; }
+
+footer { position: relative; float: left; margin-top: 50px; width: 100%; height: 50px; text-align: center; line-height: 50px; color: #ddd; }
