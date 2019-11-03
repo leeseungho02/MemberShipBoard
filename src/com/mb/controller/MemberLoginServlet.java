@@ -40,18 +40,17 @@ public class MemberLoginServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-//		MemberVO member = new MemberVO();
-//		MemberDAO dao = new MemberDAO();
-//		
-//		member.setId(request.getParameter("id"));
-//		member.setPassword(request.getParameter("password"));
-//		member.setName(request.getParameter("name"));
-//		
-//		request.setAttribute("member", member);
-//		
-//		dao.insertMember(member);
-//		
-//		request.getRequestDispatcher("board.jsp").forward(request, response);
+		MemberVO member = new MemberVO();
+		MemberDAO dao = new MemberDAO();
+		
+		member.setId(request.getParameter("id"));
+		member.setPassword(request.getParameter("password"));
+		
+		request.setAttribute("member", member);
+		
+		dao.insertMember(member);
+		
+		request.getRequestDispatcher("board.jsp").forward(request, response);
 	}
 
 }
