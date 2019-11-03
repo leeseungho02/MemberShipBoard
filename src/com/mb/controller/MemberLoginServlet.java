@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mb.vo.MemberVO;
+import com.mb.dao.MemberDAO;
+
 /**
  * Servlet implementation class MemberServlet
  */
@@ -34,8 +37,21 @@ public class MemberLoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=UTF-8");
+		
+//		MemberVO member = new MemberVO();
+//		MemberDAO dao = new MemberDAO();
+//		
+//		member.setId(request.getParameter("id"));
+//		member.setPassword(request.getParameter("password"));
+//		member.setName(request.getParameter("name"));
+//		
+//		request.setAttribute("member", member);
+//		
+//		dao.insertMember(member);
+//		
+//		request.getRequestDispatcher("board.jsp").forward(request, response);
 	}
 
 }

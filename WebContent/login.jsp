@@ -5,7 +5,7 @@
 
     <div class="container">
         <h1 style="margin: 120px 0;">로그인</h1>
-        <form action="/member/login" method="post">
+        <form action="member/login" method="post">
             <div class="form-group row">
                 <label for="id" class="col-sm-2 col-form-label">아이디</label>
                 <div class="col-sm-10">

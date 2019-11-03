@@ -24,8 +24,8 @@
                         <a class="nav-link" href="#">카페 생성</a>
                     </li>
                 </ul>
-                <a href="#" class="btn btn-link btn-sm">회원가입</a>
-                <a href="#" class="btn btn-link btn-sm" style="margin-left: 10px;">로그인</a>
+                <a href="join.jsp" class="btn btn-link btn-sm">회원가입</a>
+                <a href="login.jsp" class="btn btn-link btn-sm" style="margin-left: 10px;">로그인</a>
                 <a href="#" class="btn btn-link btn-sm">로그아웃</a>
             </div>
         </div>

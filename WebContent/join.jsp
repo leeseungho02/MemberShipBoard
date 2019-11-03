@@ -5,7 +5,7 @@
 
     <div class="container">
         <h1 style="margin: 100px 0;">회원가입</h1>
-        <form action="/member/join" method="post">
+        <form action="member/join" method="post">
             <div class="form-group row">
                 <label for="id" class="col-sm-2 col-form-label">아이디</label>
                 <div class="col-sm-10">
