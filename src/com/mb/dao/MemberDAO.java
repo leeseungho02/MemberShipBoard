@@ -11,8 +11,31 @@ public class MemberDAO extends DB {
 //		selectAll();
 	}
 	
-	public void selectMember() {
+	public boolean selectMember(MemberVO dto) {
 //		select()
+		
+		boolean result = false;
+		
+		try {
+			
+			con = getConnection();
+			String sql = "select * from members where id = ? and password = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getId());
+			pstmt.setString(2, dto.getPassword());
+			
+			int n = pstmt.executeUpdate();
+			if(n>0) result = true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try { if(pstmt!=null) pstmt.close();} catch(SQLException e) { }
+			try { if(rs!=null) rs.close();} catch(SQLException e) { }
+			try { if(con!=null) con.close();} catch(SQLException e) { }
+		}
+		
+		return result;
 	}
 	
 	public boolean insertMember(MemberVO dto) {
