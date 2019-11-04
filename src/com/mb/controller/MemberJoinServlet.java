@@ -24,37 +24,22 @@ public class MemberJoinServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
+    
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		doGet(request, response);
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
 		MemberVO member = new MemberVO();
-		MemberDAO dao = new MemberDAO();
-		
 		member.setId(request.getParameter("id"));
 		member.setName(request.getParameter("name"));
 		member.setPassword(request.getParameter("password"));
 		
-		request.setAttribute("member", member);
-		
+		MemberDAO dao = new MemberDAO();
 		dao.insertMember(member);
-		//	RequestDispatcher rd = request.getRequestDispatcher("memberOutput.jsp");
-		//	rd.forward(request, response);
+		
 		request.getRequestDispatcher("login.jsp").forward(request, response);
 	}
 
