@@ -6,8 +6,6 @@ import com.mb.db.DB;
 import com.mb.model.DBQuery;
 import com.mb.vo.MemberVO;
 
-import model.BoardVO;
-
 public class MemberDAO extends DB {
 	
 	public void selectAllMember() {
@@ -65,7 +63,7 @@ public class MemberDAO extends DB {
 		return result;
 	}
 	
-	public boolean insertMember(MemberVO dto) {
+	public void insertMember(MemberVO dto) {
 		
 		boolean result = false;
 		
@@ -88,8 +86,6 @@ public class MemberDAO extends DB {
 			try { if(rs!=null) rs.close();} catch(SQLException e) { }
 			try { if(con!=null) con.close();} catch(SQLException e) { }
 		}
-		
-		return result;
 	}
 	
 	public void updateMember(MemberVO dto) {
