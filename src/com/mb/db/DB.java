@@ -39,4 +39,22 @@ public class DB {
 	protected void delete() {
 		
 	}
+	
+	protected static void close(Connection con, PreparedStatement pstmt, ResultSet rs) {
+		try {
+			close(con, pstmt);
+			rs.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	protected static void close(Connection con, PreparedStatement pstmt) {
+		try {
+			con.close();
+			pstmt.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

@@ -23,9 +23,7 @@ public class MemberDAO extends DB {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			try { if(pstmt!=null) pstmt.close();} catch(SQLException e) { }
-			try { if(rs!=null) rs.close();} catch(SQLException e) { }
-			try { if(con!=null) con.close();} catch(SQLException e) { }
+			close(con, pstmt, rs);
 		}
 		
 	}
@@ -35,8 +33,8 @@ public class MemberDAO extends DB {
 		MemberVO vo = null;
 		
 		try {
-			
 			con = getConnection();
+			
 			
 			pstmt = con.prepareStatement(DBQuery.MEMBER_SELECT);	
 			pstmt.setString(1, dto.getId());
@@ -47,7 +45,7 @@ public class MemberDAO extends DB {
 			if(rs.next()) {
 //				rs.getString("idx)
 //				rs.getString("id")
-//				rs.getString("name")
+//				rs.getString("name")s
 //				rs.getString("password")
 //				vo = new MemberVO();
 			}
@@ -55,9 +53,7 @@ public class MemberDAO extends DB {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			try { if(pstmt!=null) pstmt.close();} catch(SQLException e) { }
-			try { if(rs!=null) rs.close();} catch(SQLException e) { }
-			try { if(con!=null) con.close();} catch(SQLException e) { }
+			close(con, pstmt, rs);
 		}
 		
 		return result;
@@ -82,9 +78,7 @@ public class MemberDAO extends DB {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			try { if(pstmt!=null) pstmt.close();} catch(SQLException e) { }
-			try { if(rs!=null) rs.close();} catch(SQLException e) { }
-			try { if(con!=null) con.close();} catch(SQLException e) { }
+			close(con, pstmt, rs);
 		}
 	}
 	
@@ -95,11 +89,10 @@ public class MemberDAO extends DB {
 		try {
 			
 			con = getConnection();
-			String sql = "UPDATE `members` SET `name`= ?,`password`= ? WHERE idx = ?";
-			pstmt = con.prepareStatement(sql);
+			pstmt = con.prepareStatement(DBQuery.MEMBER_UPDATE);
 			pstmt.setString(1, dto.getName());
 			pstmt.setString(2, dto.getPassword());
-			pstmt.setString(3, dto.getId());
+			pstmt.setString(3, dto.getIdx());
 			
 			int n = pstmt.executeUpdate();
 			if(n>0) result = true;
@@ -107,13 +100,11 @@ public class MemberDAO extends DB {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			try { if(pstmt!=null) pstmt.close();} catch(SQLException e) { }
-			try { if(rs!=null) rs.close();} catch(SQLException e) { }
-			try { if(con!=null) con.close();} catch(SQLException e) { }
+			close(con, pstmt, rs);
 		}
 	}
 	
-	public void deleteMember(String idx) {
+	public void deleteMember(String id) {
 //		delete
 		
 		boolean result = false;
@@ -121,9 +112,8 @@ public class MemberDAO extends DB {
 		try {
 			
 			con = getConnection();
-			String sql = "delete from members where idx = ?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, idx);
+			pstmt = con.prepareStatement(DBQuery.MEMBER_DELETE);
+			pstmt.setString(1, id);
 			
 			int n = pstmt.executeUpdate();
 			if(n>0) result = true;
@@ -131,10 +121,60 @@ public class MemberDAO extends DB {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			try { if(pstmt!=null) pstmt.close();} catch(SQLException e) { }
-			try { if(rs!=null) rs.close();} catch(SQLException e) { }
-			try { if(con!=null) con.close();} catch(SQLException e) { }
+			close(con, pstmt, rs);
 		}
 	}
 	
+	public boolean loginCheck(String id, String password) {
+		boolean result = false;
+		try {
+			
+			con = getConnection();
+			
+			if(userCheck(id)) {
+				result = true;
+			} else {
+				result = false;
+			}
+			
+			pstmt = con.prepareStatement(DBQuery.MEMBER_LOGIN_CHECK);
+			pstmt.setString(1, id);
+			pstmt.setString(2, password);
+			
+			int n = pstmt.executeUpdate();
+			if(n > 0) {
+				result = true;
+			} else {
+				result = false;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(con, pstmt, rs);
+		}
+		
+		return result;
+	}
+	
+	public boolean userCheck(String id) {
+		boolean result = false;
+		
+		try {
+			
+			con = getConnection();
+			pstmt = con.prepareStatement(DBQuery.MEMBER_CHECK);
+			pstmt.setString(1, id);
+			
+			int n = pstmt.executeUpdate();
+			if(n > 0) result = true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(con, pstmt, rs);
+		}
+		
+		return result;
+	}
 }
