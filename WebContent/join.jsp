@@ -16,7 +16,7 @@
                 <label for="name" class="col-sm-2 col-form-label">이름</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="name" name="name" placeholder="이름">
-                </div>
+                </div>	
             </div>
             <div class="form-group row">
                 <label for="password" class="col-sm-2 col-form-label">비밀번호</label>

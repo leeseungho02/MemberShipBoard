@@ -23,7 +23,7 @@ public class MemberDAO extends DB {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close(con, pstmt, rs);
+			closeAll(pstmt, con);
 		}
 		
 	}
@@ -45,7 +45,7 @@ public class MemberDAO extends DB {
 			if(rs.next()) {
 //				rs.getString("idx)
 //				rs.getString("id")
-//				rs.getString("name")s
+//				rs.getString("name")
 //				rs.getString("password")
 //				vo = new MemberVO();
 			}
@@ -53,7 +53,7 @@ public class MemberDAO extends DB {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close(con, pstmt, rs);
+			closeAll(rs, pstmt, con);
 		}
 		
 		return result;
@@ -78,7 +78,7 @@ public class MemberDAO extends DB {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close(con, pstmt, rs);
+			closeAll(pstmt, con);
 		}
 	}
 	
@@ -100,7 +100,7 @@ public class MemberDAO extends DB {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close(con, pstmt, rs);
+			closeAll(pstmt, con);
 		}
 	}
 	
@@ -121,7 +121,7 @@ public class MemberDAO extends DB {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close(con, pstmt, rs);
+			closeAll(pstmt, con);
 		}
 	}
 	
@@ -151,7 +151,7 @@ public class MemberDAO extends DB {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			close(con, pstmt, rs);
+			closeAll(pstmt, con);
 		}
 		
 		return result;
@@ -169,9 +169,9 @@ public class MemberDAO extends DB {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			close(con, pstmt, rs);
+//			closeAll(pstmt, con);
 		}
-		
+		System.out.println(result);
 		return result;
 	}
 }

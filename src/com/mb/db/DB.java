@@ -40,21 +40,29 @@ public class DB {
 		
 	}
 	
-	protected static void close(Connection con, PreparedStatement pstmt, ResultSet rs) {
-		try {
-			close(con, pstmt);
-			rs.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	protected void closeAll(PreparedStatement ps, Connection conn) {
+		if(ps!=null)
+			try {
+				ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		if(conn !=null)
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 	}
 	
-	protected static void close(Connection con, PreparedStatement pstmt) {
-		try {
-			con.close();
-			pstmt.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	protected void closeAll(ResultSet rs, PreparedStatement ps, Connection conn) {
+		if(rs != null)
+			try {
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		closeAll(ps, conn);
 	}
 }

@@ -39,11 +39,12 @@ public class MemberLoginServlet extends HttpServlet {
 		dao.selectMember(member);
 		int result = dao.checkMember(id);
 		if(result == 1) {
+//			로그인성공
 			dao.insertMember(member);
 		} else if(result == 0){
-			
+//			비밀번호틀림
 		} else {
-			
+//			아이디 다름
 		}
 		
 		request.setAttribute("member", member);

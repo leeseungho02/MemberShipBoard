@@ -9,7 +9,7 @@ public interface DBQuery {
 	String MEMBER_UPDATE = "UPDATE `members` SET `name`= ?,`password`= ? WHERE idx = ?";
 	String MEMBER_DELETE = "delete from members where idx = ?";
 		
-	String MEMBER_CHECK = "select * from msembers where id = ?";
+	String MEMBER_CHECK = "select * from members where id = ?";
 	String MEMBER_LOGIN_CHECK = "select * from members where id = ? and password = ?";
 	
 //	BOARDS TABLE QUERY

@@ -41,14 +41,13 @@ public class MemberJoinServlet extends HttpServlet {
 		
 		MemberDAO dao = new MemberDAO();
 		int result = dao.checkMember(id);
-		if(result == 1) {
-			PrintWriter out = response.getWriter();
-			out.print("<script>alert('이미 존재하는 아이디 입니다.');</script>");
-		} else {
-			dao.insertMember(member);
-		}
 		
-		request.getRequestDispatcher("login.jsp").forward(request, response);
+//		if(result == 1) {
+//			PrintWriter out = response.getWriter();
+//			out.print("<script>alert('이미 존재하는 아이디 입니다.');</script>");
+//		} else {
+////		dao.insertMember(member);ㄴ
+//		}
 	}
 
 }
