@@ -130,8 +130,8 @@ public class MemberDAO extends DB {
 		try {
 			
 			con = getConnection();
-			
-			if(userCheck(id)) {
+			int qwer = checkMember(id);
+			if(qwer == 1) {
 				result = true;
 			} else {
 				result = false;
@@ -157,17 +157,14 @@ public class MemberDAO extends DB {
 		return result;
 	}
 	
-	public boolean userCheck(String id) {
-		boolean result = false;
-		
+	public int checkMember(String id) {
+		int result = 0;
 		try {
 			
 			con = getConnection();
 			pstmt = con.prepareStatement(DBQuery.MEMBER_CHECK);
 			pstmt.setString(1, id);
-			
-			int n = pstmt.executeUpdate();
-			if(n > 0) result = true;
+			result = pstmt.executeUpdate();
 			
 		} catch (Exception e) {
 			e.printStackTrace();

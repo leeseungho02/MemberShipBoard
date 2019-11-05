@@ -5,6 +5,7 @@ public class PostVO {
 	private String title;						// post title
 	private String content;						// post content
 	private String writer;						// post writer
+	private String bidx;						// post board idx
 	private String insert_date;					// post insert_date
 	private String update_date;					// post update_date
 	private String view;						// post view
@@ -39,6 +40,14 @@ public class PostVO {
 	
 	public void setWriter(String writer) {
 		this.writer = writer;
+	}
+	
+	public String getBidx() {
+		return bidx;
+	}
+
+	public void setBidx(String bidx) {
+		this.bidx = bidx;
 	}
 	
 	public String getInsert_date() {

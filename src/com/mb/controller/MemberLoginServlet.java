@@ -29,15 +29,22 @@ public class MemberLoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html; charset=UTF-8");
-		
 		MemberVO member = new MemberVO();
-		member.setId(request.getParameter("id"));
-		member.setPassword(request.getParameter("password"));
+		String id = request.getParameter("id");
+		String password = request.getParameter("password");
+		member.setId(id);
+		member.setPassword(password);
 		
 		MemberDAO dao = new MemberDAO();
 		dao.selectMember(member);
+		int result = dao.checkMember(id);
+		if(result == 1) {
+			dao.insertMember(member);
+		} else if(result == 0){
+			
+		} else {
+			
+		}
 		
 		request.setAttribute("member", member);
 		request.getRequestDispatcher("board.jsp").forward(request, response);

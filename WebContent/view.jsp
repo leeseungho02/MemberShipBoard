@@ -19,8 +19,6 @@
 				<a href="#" class="list-group-item list-group-item-action">자유게시판</a>
 				<a href="#" class="list-group-item list-group-item-action">등업게시판</a>
 				<a href="#" class="list-group-item list-group-item-action">카페 관리</a>
-				<a href="#" class="list-group-item list-group-item-action">가입하기</a>
-				<a href="#" class="list-group-item list-group-item-action">탈퇴하기</a>
 			</div>
 		</div>
 
