@@ -30,23 +30,27 @@ public class MemberJoinServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		
 		String id = request.getParameter("id");
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 		
-		MemberVO member = new MemberVO();
-		member.setId(id);
-		member.setName(name);
-		member.setPassword(password);
-		
-		MemberDAO dao = new MemberDAO();
-		int result = dao.checkMember(id);
+//		MemberVO member = new MemberVO();
+//		member.setId(id);
+//		member.setName(name);
+//		member.setPassword(password);
+//		
+//		MemberDAO dao = new MemberDAO();
+//		int result = dao.checkMember(id);
+		System.out.println(id+ " "+ name + " " +  password);
 		
 //		if(result == 1) {
 //			PrintWriter out = response.getWriter();
 //			out.print("<script>alert('이미 존재하는 아이디 입니다.');</script>");
 //		} else {
-////		dao.insertMember(member);ㄴ
+////		dao.insertMember(member);
 //		}
 	}
 

@@ -1,4 +1,4 @@
-package com.mb.model;
+package com.mb.db;
 
 public interface DBQuery {
 	

@@ -6,6 +6,18 @@ public class MemberVO {
 	private String name;				// MemberVO name
 	private String password;			// MemberVO password
 	
+	public MemberVO() {
+		super();
+	}
+	
+	public MemberVO(String idx, String id, String name, String password) {
+		super();
+		this.idx = idx;
+		this.id = id;
+		this.name = name;
+		this.password = password;
+	}
+
 	/**
 	 * MemberVO getIdx()
 	 */

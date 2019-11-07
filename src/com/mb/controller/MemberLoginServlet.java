@@ -29,26 +29,24 @@ public class MemberLoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		MemberVO member = new MemberVO();
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
-		member.setId(id);
-		member.setPassword(password);
 		
 		MemberDAO dao = new MemberDAO();
-		dao.selectMember(member);
-		int result = dao.checkMember(id);
+		
+		int result = dao.loginCheck(id, password);
 		if(result == 1) {
 //			로그인성공
-			dao.insertMember(member);
+			request.setAttribute("member", dao.loginCheck(id, password));
+			request.getRequestDispatcher("board.jsp").forward(request, response);
+			System.out.println("로그인성공");
 		} else if(result == 0){
 //			비밀번호틀림
+			System.out.println("비밀번호 틀림");
 		} else {
 //			아이디 다름
+			System.out.println("아이디가 존재하지않음");
 		}
-		
-		request.setAttribute("member", member);
-		request.getRequestDispatcher("board.jsp").forward(request, response);
 	}
 
 }

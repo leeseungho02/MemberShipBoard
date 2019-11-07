@@ -3,7 +3,7 @@ package com.mb.dao;
 import java.sql.SQLException;
 
 import com.mb.db.DB;
-import com.mb.model.DBQuery;
+import com.mb.db.DBQuery;
 import com.mb.vo.MemberVO;
 
 public class MemberDAO extends DB {
@@ -28,7 +28,7 @@ public class MemberDAO extends DB {
 		
 	}
 	
-	public boolean selectMember(MemberVO dto) {
+	public MemberVO selectMember(String id, String password) {
 		boolean result = false;
 		MemberVO vo = null;
 		
@@ -37,17 +37,13 @@ public class MemberDAO extends DB {
 			
 			
 			pstmt = con.prepareStatement(DBQuery.MEMBER_SELECT);	
-			pstmt.setString(1, dto.getId());
-			pstmt.setString(2, dto.getPassword());
+			pstmt.setString(1, id);
+			pstmt.setString(2, password);
 			
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-//				rs.getString("idx)
-//				rs.getString("id")
-//				rs.getString("name")
-//				rs.getString("password")
-//				vo = new MemberVO();
+				vo = new MemberVO(rs.getString("idx"), rs.getString("id"), rs.getString("name"), rs.getString("password"));
 			}
 
 		} catch (SQLException e) {
@@ -56,7 +52,7 @@ public class MemberDAO extends DB {
 			closeAll(rs, pstmt, con);
 		}
 		
-		return result;
+		return vo;
 	}
 	
 	public void insertMember(MemberVO dto) {
@@ -125,38 +121,6 @@ public class MemberDAO extends DB {
 		}
 	}
 	
-	public boolean loginCheck(String id, String password) {
-		boolean result = false;
-		try {
-			
-			con = getConnection();
-			int qwer = checkMember(id);
-			if(qwer == 1) {
-				result = true;
-			} else {
-				result = false;
-			}
-			
-			pstmt = con.prepareStatement(DBQuery.MEMBER_LOGIN_CHECK);
-			pstmt.setString(1, id);
-			pstmt.setString(2, password);
-			
-			int n = pstmt.executeUpdate();
-			if(n > 0) {
-				result = true;
-			} else {
-				result = false;
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeAll(pstmt, con);
-		}
-		
-		return result;
-	}
-	
 	public int checkMember(String id) {
 		int result = 0;
 		try {
@@ -169,9 +133,32 @@ public class MemberDAO extends DB {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-//			closeAll(pstmt, con);
+			closeAll(pstmt, con);
 		}
 		System.out.println(result);
+		return result;
+	}
+	
+	public int loginCheck(String id, String password) {
+		int result = 0;
+		try {
+			
+			con = getConnection();
+			
+			result = checkMember(id);
+			
+			pstmt = con.prepareStatement(DBQuery.MEMBER_LOGIN_CHECK);
+			pstmt.setString(1, id);
+			pstmt.setString(2, password);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeAll(pstmt, con);
+		}
+		
 		return result;
 	}
 }
